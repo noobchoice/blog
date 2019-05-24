@@ -33,9 +33,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i>posts</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>categories</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>tags</a></li>
+            <li><a href="{{ route('post.index') }}"><i class="fa fa-circle-o"></i>posts</a></li>
+            <li><a href="{{ route('category.index') }}"><i class="fa fa-circle-o"></i>categories</a></li>
+            <li><a href="{{ route('tag.index') }}"><i class="fa fa-circle-o"></i>tags</a></li>
           </ul>
           
           <a href="#">
@@ -45,7 +45,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="index.html"><i class="fa fa-circle-o"></i>users</a></li>
+            <li class=""><a href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i>users</a></li>
             
           </ul>
 

@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\user\post;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-
     {
-        $postDBData = post::all();
-        return view('admin/post/show', compact('postDBData'));
+        return view('admin/user/show');
     }
 
     /**
@@ -27,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin/post/post');
+        return view('admin/user/create');
     }
 
     /**
@@ -38,29 +35,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-
-            'title'   => 'required',
-            'subtitle'=> 'required',
-            'slug'    => 'required',
-            'body'    => 'required'
-
-
-        ]);
-
-        $postData = new post;
-
-        $postData->title = $request->title;
-
-        $postData->subtitle = $request->subtitle;
-
-        $postData->slug = $request->slug;
-
-        $postData->body = $request->body;
-
-        $postData->save();
-
-        return redirect(route('post.create'));
+        //
     }
 
     /**

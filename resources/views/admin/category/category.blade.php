@@ -27,7 +27,13 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+             @if(count($errors)>0)
+              @foreach($errors->all() as $error)
+                <p class="alert alert-danger">{{ $error }}</p>
+              @endforeach
+            @endif
+            <form role="form" action="{{ route('category.store') }}" method="post">
+              @csrf
               <div class="box-body">
               	<div class="col-lg-6">
               		<div class="form-group">
@@ -44,6 +50,7 @@
 
 	                <div class="form-group">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ route('category.index') }}" class=" btn btn-warning">Back</a>
               </div>
 
               	</div>

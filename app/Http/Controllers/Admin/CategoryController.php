@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\user\category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categoryDBData = category::all();
+        return view('admin/category/show',compact('categoryDBData'));
     }
 
     /**
@@ -35,8 +37,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'slug' => 'required'
+
+        ]);
+
+        $categoryData = new category;
+
+        $categoryData->name = $request->name;
+
+        $categoryData->slug = $request->slug;
+
+        $categoryData->save();
+
+        return redirect(route('category.index'));
     }
+    
 
     /**
      * Display the specified resource.
