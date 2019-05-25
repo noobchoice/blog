@@ -67,8 +67,32 @@
                   <td>{{ $data->slug }}</td>
                   <td>{{ $data->created_at }}
                   </td>
-                  <td>edit</td>
-                  <td>delete</td>
+                  <td>
+                    <a href="{{ route('post.edit', $data->id) }}">
+                      <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                  </td>
+
+                  <td>
+                      <form id="form-delete-{{ $data->id }}" action="{{ route('post.destroy', $data->id) }}" method="post" style="display: none;" >
+                        @csrf
+                        @method('DELETE')
+                      </form>
+
+
+                    <a href="" onclick="if(confirm('Are You Sure'))
+                    {
+                      event.preventDefault();
+                      document.getElementById('form-delete-{{ $data->id }}').submit();
+                    }
+                    else{
+                      event.preventDefault();
+                    }
+
+                    ">
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                  </td>
                 </tr>
 
                   @endforeach

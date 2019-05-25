@@ -32,8 +32,8 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ route('post.index') }}"><i class="fa fa-circle-o"></i>posts</a></li>
+          <ul >
+            <li><a  href="{{ route('post.index') }}"><i class="fa fa-circle-o"></i>posts</a></li>
             <li><a href="{{ route('category.index') }}"><i class="fa fa-circle-o"></i>categories</a></li>
             <li><a href="{{ route('tag.index') }}"><i class="fa fa-circle-o"></i>tags</a></li>
           </ul>
@@ -44,7 +44,7 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
+          <ul >
             <li class=""><a href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i>users</a></li>
             
           </ul>
