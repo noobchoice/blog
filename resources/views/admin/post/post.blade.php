@@ -55,20 +55,48 @@
 
               	</div>
                 
-                <div class="col-lg-6">
-                	<div class="form-group">
-	                  <label for="image">File input</label>
-	                  <input type="file" name="image" id="image">
+               <div class="col-lg-6">
+                  <div class="form-group">
+                    <div class="div pull-right">
+                    <label for="image">File input</label>
+                    <input type="file" name="image" id="image">
 
-	                </div>
-	                <br>
-	                <br>
-	                <div class="checkbox">
-	                  <label>
-	                    <input type="checkbox" name="status"> Publish
-	                  </label>
-	                </div>
-	              </div>
+                  </div>
+                  </div>
+                     
+                  <div class="checkbox pull-left">
+                    <label>
+                      <input type="checkbox" name="status" value="1"> Publish
+                    </label>
+                  </div>
+
+
+
+                
+                 <br>
+                 <br>
+                  
+
+                <div class="form-group" style="margin-top: 18px">
+                  <label>Choose Category</label>
+                  <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="categories[]">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Choose Tags</label>
+                  <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="tags[]">
+                    @foreach($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @endforeach
+                  </select>
+                  
+                </div>
+
+                </div>
 
                 </div>
                 
@@ -89,8 +117,8 @@
             <!-- /.box-header -->
             <div class="box-body pad">
               
-                <textarea class="textarea" name="body" placeholder="Place some text here"
-                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <textarea  name="body" 
+                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1"></textarea>
               
             </div>
           </div> 
@@ -113,3 +141,24 @@
   </div>
 
 @endsection
+@push('cust-script')
+<!-- CK Editor -->
+<script src="{{ asset('admin/bower_components/ckeditor/ckeditor.js') }}"></script>
+
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1')
+    //bootstrap WYSIHTML5 - text editor
+    $('.textarea').wysihtml5()
+  })
+</script>
+
+<script>
+  $(document).ready(function($) {
+    $('.select2').select2();
+  });
+</script>
+
+@endpush

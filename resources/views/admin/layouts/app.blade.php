@@ -18,4 +18,5 @@
 	</div>
 	@include('admin/layouts/scripts')
 </body>
+@stack('cust-script')
 </html>

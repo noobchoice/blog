@@ -58,43 +58,108 @@
                 
                 <div class="col-lg-6">
                   <div class="form-group">
+                    <div class="div pull-right">
                     <label for="image">File input</label>
                     <input type="file" name="image" id="image">
 
                   </div>
-                  <br>
-                  <br>
-                  <div class="checkbox">
+                  </div>
+                     
+                  <div class="checkbox pull-left">
                     <label>
-                      <input type="checkbox" name="status" @if($post->status==1) checked @endif> Publish
+                      <input type="checkbox" name="status" value="1" @if($post->status==1) checked @endif> Publish
                     </label>
                   </div>
+
+
+
+                
+                 <br>
+                 <br>
+                  
+
+                
+                <div class="form-group" style="margin-top: 18px">
+                  <label>Choose Category</label>
+                  <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="categories">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}"
+                  
+
+                      @foreach($post->categories as $postCategory)
+
+                      @if($postCategory->id == $category->id)
+
+                      selected 
+
+                      @endif
+
+                      @endforeach
+
+
+                      >{{ $category->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Choose Tags</label>
+                  <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="tags[]">
+                    @foreach($tags as $tag)
+                    <option value="{{ $tag->id }}"
+                      
+                      @foreach($post->tags as $postTag)
+
+                      @if($postTag->id == $tag->id)
+
+                      selected
+
+                      @endif
+
+                      @endforeach
+                              
+
+
+                      
+                      >{{ $tag->name }}</option>
+                    @endforeach
+                  </select>
+                  
                 </div>
 
                 </div>
-                
-               <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Write Post Body Here
-                <small>Simple and fast</small>
-              </h3>
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
-                        title="Collapse">
-                  <i class="fa fa-minus"></i></button>
-                
+
+
+
+
               </div>
-              <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body pad">
-              
-                <textarea class="textarea" name="body" placeholder="Place some text here"
-                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" >{{ $post->body }}</textarea>
-              
-            </div>
-          </div> 
+                
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Write Post Body Here
+                    <small>Simple and fast</small>
+                  </h3>
+                  <!-- tools box -->
+                  <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+
+
+                  </div>
+
+                  <!-- /. tools -->
+
+
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body pad">
+
+                  <textarea name="body" 
+                  style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1" >{{ $post->body }}</textarea>
+
+                </div>
+              </div> 
               
 
               <div class="box-footer">
@@ -114,3 +179,25 @@
   </div>
 
 @endsection
+
+@push('cust-script')
+<!-- CK Editor -->
+<script src="{{ asset('admin/bower_components/ckeditor/ckeditor.js') }}"></script>
+
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1')
+    //bootstrap WYSIHTML5 - text editor
+    $('.textarea').wysihtml5()
+  })
+</script>
+
+<script>
+  $(document).ready(function($) {
+    $('.select2').select2();
+  });
+</script>
+
+@endpush
