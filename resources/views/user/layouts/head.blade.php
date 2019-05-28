@@ -15,3 +15,5 @@
 
   <!-- Custom styles for this template -->
   <link href="{{ asset('user/css/clean-blog.min.css') }}" rel="stylesheet">
+  {{-- Prism Js --}}
+  <link href="{{ asset('user/css/prism.css') }}" rel="stylesheet">

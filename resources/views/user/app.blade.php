@@ -16,7 +16,7 @@
         
 
   @include('user/layouts/footer')
-
+	
 </body>
-
+	@stack('user-script')
 </html>

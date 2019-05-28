@@ -58,3 +58,8 @@
 
 @endsection
 
+@push('user-script')
+
+<script src="{{ asset('user/js/prism.js') }}"></script>
+
+@endpush
