@@ -81,7 +81,7 @@
                 
                 <div class="form-group" style="margin-top: 18px">
                   <label>Choose Category</label>
-                  <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="categories">
+                  <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name="categories[]">
                     @foreach($categories as $category)
                     <option value="{{ $category->id }}"
                   
@@ -182,7 +182,7 @@
 
 @push('cust-script')
 <!-- CK Editor -->
-<script src="{{ asset('admin/bower_components/ckeditor/ckeditor.js') }}"></script>
+<script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>
 
 <script>
   $(function () {

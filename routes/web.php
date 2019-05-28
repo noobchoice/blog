@@ -3,9 +3,18 @@
 //Routes For Users
 Route::group(['namespace'=>'User'], function(){
 
-	Route::get('/','HomeController@index');
+	Route::get('/',[
 
-	Route::get('/post', 'PostController@index')->name('post');
+		'as'  => 'home',
+		'uses'=> 'HomeController@index'
+
+	]);
+
+	Route::get('/post{slug}', [
+		'as'  => 'postPage',
+		'uses'=> 'PostController@post'
+
+	]);
 });
 
 
