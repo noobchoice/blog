@@ -1,6 +1,6 @@
 @extends('user/app')
 
-@section('bg-img', asset('user/img/post-bg.jpg'))
+@section('bg-img', Storage::disk('local')->url($slug->image))
 
   {{-- @foreach($slug as $slug) --}}
 

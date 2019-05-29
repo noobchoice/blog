@@ -34,7 +34,7 @@
             @endif
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{ route('post.update',$post->id) }}" method="post">
+            <form role="form" action="{{ route('post.update',$post->id) }}" method="post" enctype="multipart/form-data">
               @csrf
               @method('PATCH')
               <div class="box-body">

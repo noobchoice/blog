@@ -34,7 +34,7 @@
             @endif
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{ route('post.store') }}" method="post">
+            <form role="form" action="{{ route('post.store') }}" method="post"  enctype="multipart/form-data">
               @csrf
               <div class="box-body">
               	<div class="col-lg-6">
