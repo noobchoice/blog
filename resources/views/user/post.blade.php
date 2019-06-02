@@ -19,13 +19,13 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
 
-          <small>Created_at&nbsp;{{ $slug->created_at->diffForHumans() }}</small>
+          <small>Created At&nbsp;{{ $slug->created_at->diffForHumans() }}</small>
 
           @foreach($slug->categories as $category)
 
-          <small class="pull-right" style="margin-right: 20px">Category&nbsp;
+          <small class="float-right" style="margin-right: 20px">Category&nbsp;
 
-          {{ $category->name }}
+          <a href="{{ route('PostsByCategory', $category) }}">{{ $category->name }}</a>
 
           @endforeach
 
@@ -38,14 +38,14 @@
           
             <h3>Tag Clouds</h3>
 
-          <small class="pull-right" style="margin-right: 20px; border-radius: 5px; border: 1px solid gray; padding: 5px;">
+          <a href=""><small class="" style="margin-right: 20px; border-radius: 5px; border: 1px solid gray; padding: 5px;">
           @foreach($slug->tags as $tags)
 
           {{ $tags->name }}
 
           @endforeach
           </small>
-
+          </a>
 
         </div>
         {{-- @endforeach --}}

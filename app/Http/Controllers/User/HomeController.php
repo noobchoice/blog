@@ -13,4 +13,14 @@ class HomeController extends Controller
     	$posts = post::where('status',1)->paginate(4);
     	return view('user/blog',compact('posts'));
     }
+
+    public function tag()
+    {
+    	# code...
+    }
+
+    public function category()
+    {
+    	return '5';
+    }
 }

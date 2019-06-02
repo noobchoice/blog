@@ -15,6 +15,18 @@ Route::group(['namespace'=>'User'], function(){
 		'uses'=> 'PostController@post'
 
 	]);
+
+	Route::get('/post/tag{tag}',[
+		'as'   => 'PostsByTag',
+		'uses' => 'HomeController@tag'
+
+	]);
+
+	Route::get('/post/category{category}',[
+		'as'   => 'PostsByCategory',
+		'uses' => 'HomeController@category'
+
+	]);
 });
 
 
@@ -45,3 +57,7 @@ Route::group(['namespace'=>'Admin'], function(){
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
